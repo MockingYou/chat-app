@@ -1,9 +1,11 @@
-const generateMessage = (username, text, createdAt, id) => {
+const generateMessage = (username, body, createdAt, id, type, fileName) => {
     return {
         username,
-        text,
+        body,
         createdAt,
-        id
+        id,
+        type,
+        fileName
     }
 }   
 

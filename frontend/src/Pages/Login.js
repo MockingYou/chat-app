@@ -26,9 +26,9 @@ function Login({socket}) {
                     <h1>No time to explain, get in!</h1>
                     <form action="/chat" onSubmit={handleSubmit}>
                         <label>Display name</label>
-                        <input type="text" name="username" placeholder="Display name" required  onChange={e => setUsername(e.target.value)} />
+                        <input className="loginInput" type="text" name="username" placeholder="Display name" required  onChange={e => setUsername(e.target.value)} />
                         <label>Room</label>
-                        <input type="text" name="room" placeholder="Room name" required  onChange={e => setRoomname(e.target.value)} />
+                        <input className="loginInput" type="text" name="room" placeholder="Room name" required  onChange={e => setRoomname(e.target.value)} />
                         <button>Enter</button>
                     </form>
                 </div>
