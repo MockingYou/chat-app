@@ -42,7 +42,6 @@ const ChatPage = ({socket}) => {
 		}
 	});
 
-
   useEffect(()=> {
     socket.on("message", data => setMessages([...messages, data]))
   }, [socket, messages])

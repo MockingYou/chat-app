@@ -278,9 +278,10 @@ button:disabled {
 .message__recipient {
   background-color: #333744;
   max-width: 600px;
-  max-height: 500px;
-  width: auto;
-  height: auto;
+  max-height: 600px;
+  width: fit-content;
+  height: fit-content;
+  /* overflow: auto; */
   padding: 10px;
   border-radius: 10px;
   font-size: 15px;
@@ -292,9 +293,9 @@ button:disabled {
 .message__sender{
   background-color: #333744;
   max-width: 600px;
-  max-height: 500px;
-  width: auto;
-  height: auto;
+  max-height: 600px;
+  width: fit-content;
+  height: fit-content;
   padding: 10px;
   border-radius: 10px;
   margin-left: auto;
