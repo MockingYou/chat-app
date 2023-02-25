@@ -1,12 +1,12 @@
 import './App.css';
 import {  BrowserRouter, Route, Routes } from "react-router-dom";
-import io from "socket.io-client"
+import socketIO from "socket.io-client"
 import React from 'react'
 
 import Login from './Pages/Login'
 import Chat from './Pages/Chat'
 
-const socket = io.connect("https://chat-server-jvt5.onrender.com");
+const socket = socketIO.connect("https://chat-server-jvt5.onrender.com");
 
 function App() {
   return (

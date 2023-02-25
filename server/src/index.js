@@ -13,8 +13,8 @@ const app = express();
 const server = http.createServer(app)
 const io = socketio(server, {
     cors: {
-        origin: 'https://chat-server-jvt5.onrender.com',
-        // methods: ["GET", "POST"],
+        origin: ':*:',
+        methods: ["GET", "POST"],
     }
 })
 
