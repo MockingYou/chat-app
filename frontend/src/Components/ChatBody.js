@@ -21,6 +21,7 @@ const ChatBody = ({messages, typingStatus, lastMessageRef}) => {
     if(message.type === "file") {
       const blob = new Blob([message.body], { type: message.type})
       if(message.username === localStorage.getItem("username")) {
+        
         return (
           <div className="message__sender" key={message.id}>
             <p>
