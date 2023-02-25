@@ -14,7 +14,7 @@ const server = http.createServer(app)
 const io = socketio(server, {
     cors: {
         origin: 'https://chat-server-jvt5.onrender.com',
-        methods: ["GET", "POST"],
+        // methods: ["GET", "POST"],
     }
 })
 
@@ -74,7 +74,9 @@ io.on('connection', (socket) => {
             io.to(user.room).emit("typingResponse", '')
             // io.to(user.room).emit('roomData', getUsersInRoom(user.room))
         }
-        // socket.disconnect()
+        setTimeout(() => {
+            socket.disconnect()
+        }, 10000);
     })
 })
 
