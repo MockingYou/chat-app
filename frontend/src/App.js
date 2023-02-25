@@ -6,7 +6,7 @@ import React from 'react'
 import Login from './Pages/Login'
 import Chat from './Pages/Chat'
 
-const socket = socketIO.connect("https://chat-server-jvt5.onrender.com");
+const socket = socketIO("https://chat-server-jvt5.onrender.com");
 
 function App() {
   return (

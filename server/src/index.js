@@ -11,12 +11,11 @@ const { addUser, removeUser, getUser, getUsersInRoom } = require('./utils/users'
 
 const app = express();
 const server = http.createServer(app)
-// const io = socketio(server, {
-//     cors: {
-//         origins: '*:*'
-//     }
-// })
-const io = new Server(server);
+const io = socketio(server, {
+    cors: {
+        origins: 'https://chat-server-jvt5.onrender.com'
+    }
+})
 
 const port = process.env.PORT || 5000;
 const publicDirectoryPath = path.join(__dirname, '../public')
