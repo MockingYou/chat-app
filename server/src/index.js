@@ -51,6 +51,7 @@ io.on('connection', (socket) => {
 
     socket.on('sendMessage', (messageObject, callback = () => {}) => {
         const user = getUser(socket.id)
+        console.log(user)
         const filter = new Filter()
         const createdAt = moment(new Date().getTime()).format('H:mm:ss')
         if(filter.isProfane(messageObject.message)) {
