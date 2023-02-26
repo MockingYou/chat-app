@@ -57,7 +57,7 @@ io.on('connection', (socket) => {
             io.emit('message', generateMessage('Admin', 'https://www.youtube.com/watch?v=25f2IgIrkD4', createdAt, socket.id + Math.random(), 'text'))
             return callback('https://www.youtube.com/watch?v=25f2IgIrkD4')
         }
-        if(user.room) {
+        if(user.room !== undefined) {
             io.to(user.room).emit('message', generateMessage(user.username, messageObject.body, createdAt, messageObject.id, messageObject.type, messageObject.fileName))
         } else {
             io.to(messageObject.roomname).emit('message', generateMessage(user.username, messageObject.body, createdAt, messageObject.id, messageObject.type, messageObject.fileName))
