@@ -6,16 +6,12 @@ function Login({socket}) {
     const navigate = useNavigate()
     const [username, setUsername] = useState("")
     const [roomname, setRoomname] = useState("")
-    // function enterChat() {
-    //     navigate('/chat')
-    // }
 
     const handleSubmit = (e) => {
         e.preventDefault()
         localStorage.setItem("username", username)
         localStorage.setItem("roomname", roomname)
         socket.emit("join", {username: username, room: roomname, socketID: socket.id})
-        // navigate("/chat/username=" + username + "&room=" + roomname)
         navigate("/chat")
     }
 

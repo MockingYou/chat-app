@@ -51,14 +51,17 @@ io.on('connection', (socket) => {
 
     socket.on('sendMessage', (messageObject, callback = () => {}) => {
         const user = getUser(socket.id)
-        console.log(user)
         const filter = new Filter()
         const createdAt = moment(new Date().getTime()).format('H:mm:ss')
         if(filter.isProfane(messageObject.message)) {
             io.emit('message', generateMessage('Admin', 'https://www.youtube.com/watch?v=25f2IgIrkD4', createdAt, socket.id + Math.random(), 'text'))
             return callback('https://www.youtube.com/watch?v=25f2IgIrkD4')
         }
-        io.to(user.room).emit('message', generateMessage(user.username, messageObject.body, createdAt, messageObject.id, messageObject.type, messageObject.fileName))
+        if(user.room) {
+            io.to(user.room).emit('message', generateMessage(user.username, messageObject.body, createdAt, messageObject.id, messageObject.type, messageObject.fileName))
+        } else {
+            io.to(messageObject.roomname).emit('message', generateMessage(user.username, messageObject.body, createdAt, messageObject.id, messageObject.type, messageObject.fileName))
+        }
         callback()
     }) 
     // socket.on('sendLocation', (coords, callback) => {

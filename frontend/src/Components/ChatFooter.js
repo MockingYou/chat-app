@@ -18,6 +18,7 @@ const ChatFooter = ({socket}) => {
             id: `${socket.id}${Math.random()}`, 
             type: "file",
             body: file,
+            roomname: localStorage.getItem('roomname'),
             mimeType: file.type,
             fileName: file.name
           }
@@ -28,7 +29,8 @@ const ChatFooter = ({socket}) => {
           const messageObject = {
             id: `${socket.id}${Math.random()}`, 
             type: "text",
-            body: message
+            body: message,
+            roomname: localStorage.getItem('roomname'),
           }
             socket.emit("sendMessage", messageObject)
             setMessage("")
