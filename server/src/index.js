@@ -12,6 +12,7 @@ const { addUser, removeUser, getUser, getUsersInRoom } = require('./utils/users'
 const app = express();
 const server = http.createServer(app)
 const io = socketio(server, {
+    noServer: true,
     cors: {
         origin: '*',
         methods: ["GET", "POST"],
