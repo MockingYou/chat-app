@@ -65,6 +65,60 @@ button:disabled {
   background: #3399ff;
 }
 
+@media screen and (max-width: 600px) {
+  .sendBtn {
+    padding: 12px;
+    width: 80px;
+    height: 50px;
+    color: white;
+    font-size: 16px;
+  }
+  .chat__mainHeader {
+    width: auto;
+    justify-content: space-between;
+  }
+  .leaveChat__btn {
+    width: 80px;
+    height: auto;
+    margin-left: 20px;
+    margin-right: 2px;
+  }
+  .chat__sidebar {
+    overflow: hidden;
+    height: 100vh;
+    margin:0px;
+    border-radius: 0px 4px 4px 0px;
+    padding:0px;
+    justify-content: space-between;
+    display: inline-block;
+    margin-left:0px;
+    vertical-align:top;
+    margin-top:0px;
+    padding-top:0px;
+    width:200px;
+  }
+  .leftmenucollapsed {   
+    margin-left:-200px;
+    transition: 0.2s;
+  }
+}
+
+/* @media screen and (max-width: 1432px) {
+  button {
+    padding: 12px;
+    width: 50px;
+    color: white;
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 1250px) {
+  button {
+    padding: 12px;
+    width: 50px;
+    color: white;
+    font-size: 16px;
+  }
+} */
 /* Join Page Styles */
 
 .centered-form {

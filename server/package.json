@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "concurrently  \"nodemon src/index.js\" \" cd ../frontend && npm start \""
   },
   "keywords": [],
   "author": "",
