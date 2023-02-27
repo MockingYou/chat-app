@@ -10,7 +10,7 @@ function Image(props) {
         }
     }, [props.blob])
     return (
-        <img style={{width: "auto", height: "auto", maxWidth: 500, maxHeight: 500 }} src={imageSrc} alt={props.fileName} />
+        <img className="imgSent" src={imageSrc} alt={props.fileName} />
     )
 }
 

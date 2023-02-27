@@ -64,44 +64,13 @@ button:disabled {
   cursor: default;
   background: #3399ff;
 }
-
-@media screen and (max-width: 600px) {
-  .sendBtn {
-    padding: 12px;
-    width: 80px;
-    height: 50px;
-    color: white;
-    font-size: 16px;
-  }
-  .chat__mainHeader {
-    width: auto;
-    justify-content: space-between;
-  }
-  .leaveChat__btn {
-    width: 80px;
-    height: auto;
-    margin-left: 20px;
-    margin-right: 2px;
-  }
-  .chat__sidebar {
-    overflow: hidden;
-    height: 100vh;
-    margin:0px;
-    border-radius: 0px 4px 4px 0px;
-    padding:0px;
-    justify-content: space-between;
-    display: inline-block;
-    margin-left:0px;
-    vertical-align:top;
-    margin-top:0px;
-    padding-top:0px;
-    width:200px;
-  }
-  .leftmenucollapsed {   
-    margin-left:-200px;
-    transition: 0.2s;
-  }
+.imgSent {
+  width: auto; 
+  height: auto; 
+  max-width: 500px; 
+  max-height:500px;
 }
+
 
 /* @media screen and (max-width: 1432px) {
   button {
@@ -363,4 +332,67 @@ button:disabled {
     text-align: center;
     font-size: 13px;
     font-style: italic;
+  }
+
+  @media (max-width: 600px) {
+    .sendBtn {
+      padding: 12px;
+      width: 80px;
+      height: 50px;
+      color: white;
+      font-size: 16px;
+    }
+    .chat__mainHeader {
+      width: auto;
+      justify-content: space-between;
+    }
+    .leaveChat__btn {
+      width: 80px;
+      height: auto;
+      margin-left: 20px;
+      margin-right: 2px;
+      font-size: small;
+      padding: 5px;
+    }
+    .chat__sidebar {
+      display: none;
+    }
+    .leftmenucollapsed {   
+      display: none;
+    }
+    .compose {
+      bottom: 0%;
+      position: fixed;
+      width: 100%;
+      
+    }
+    .compose input {
+      width: 100%;
+    }
+    .message__recipient {
+      max-width: 200px;
+      max-height: 200px;
+      width: fit-content;
+      height: fit-content;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+    .message__sender {
+      max-width: 150px;
+      max-height: 150px;
+      width: fit-content;
+      height: fit-content;
+      padding: 10px;
+      border-radius: 10px;
+      margin-left: auto;
+      margin-bottom: 10px;
+    }
+    .imgSent {
+      width: auto; 
+      height: auto; 
+      max-width: 100px;
+      max-height: 100px;
+    }
   }
