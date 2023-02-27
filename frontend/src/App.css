@@ -395,6 +395,6 @@ button:disabled {
       max-height: 150px;
     }
     .chat__messages {
-      height: 750px;
+      height: 650px;
     }
   }
