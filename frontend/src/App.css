@@ -159,7 +159,7 @@ button:disabled {
 
 .chat__main {
   flex-grow: 1;
-  display: flex;
+  display:inline-flex;
   flex-direction: column;
   max-height: 100vh;
   /* margin-left:270px; */
@@ -362,7 +362,6 @@ button:disabled {
     }
     .compose {
       bottom: 0%;
-      position: fixed;
       width: 100%;
       
     }
@@ -394,5 +393,8 @@ button:disabled {
       height: auto; 
       max-width: 100px;
       max-height: 100px;
+    }
+    .chat__messages {
+      height: 750px;
     }
   }
