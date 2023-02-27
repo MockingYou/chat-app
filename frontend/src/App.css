@@ -379,8 +379,8 @@ button:disabled {
       margin-bottom: 10px;
     }
     .message__sender {
-      max-width: 150px;
-      max-height: 150px;
+      max-width:200px;
+      max-height: 200px;
       width: fit-content;
       height: fit-content;
       padding: 10px;
@@ -391,8 +391,8 @@ button:disabled {
     .imgSent {
       width: auto; 
       height: auto; 
-      max-width: 100px;
-      max-height: 100px;
+      max-width: 150px;
+      max-height: 150px;
     }
     .chat__messages {
       height: 750px;
