@@ -1,12 +1,12 @@
-import path from 'path';
-import http from 'http';
-import express from 'express';
-import { Server } from 'socket.io';
-import cors from 'cors';
-import Filter from 'bad-words';
-import { generateMessage } from './utils/messages';
-import moment from 'moment';
-import { addUser, removeUser, getUser, getUsersInRoom } from './utils/users';
+const path = require('path');
+const http = require('http');
+const express = require('express');
+const socketio = require('socket.io');
+const cors = require('cors');
+const Filter = require('bad-words');
+const { generateMessage } = require('./utils/messages');
+const moment = require('moment');
+const { addUser, removeUser, getUser, getUsersInRoom } = require('./utils/users');
 
 const app = express();
 const server = http.createServer(app);
