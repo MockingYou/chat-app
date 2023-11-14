@@ -89,8 +89,4 @@ The frontend is built using React and communicates with the backend using Socket
 - `App.js`: The main component managing the chat application state and rendering child components.
 - `Chat.js`: Renders the chat window and handles message sending.
 - `Login.js`: Handles selecting a user and a room to join
-## Contributing
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
