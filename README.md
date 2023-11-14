@@ -2,6 +2,9 @@
 
 This is a simple chat application developed using React for the frontend and Socket.io for the backend. It allows users to join chat rooms, send messages, and receive real-time updates.
 
+Join a chat room at: [Chat App](#https://chat-app-h3j0.onrender.com/)
+
+
 ## Table of Contents
 
 - [Features](#features)
