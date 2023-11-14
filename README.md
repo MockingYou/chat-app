@@ -36,7 +36,7 @@ This is a simple chat application developed using React for the frontend and Soc
 2. Install dependencies:
 
     ```
-    cd backend
+    cd server
     npm install
 
 3. Run the backend server:
