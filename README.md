@@ -80,7 +80,7 @@ The backend is built using Node.js, Express, and Socket.io. The main server file
 
 - `utils/messages.js`: Contains functions to generate chat messages.
 - `utils/users.js`: Manages user-related functions (add, remove, get, get users in a room).
-- `server.js`: Configures the Express server, Socket.io, and handles socket events.
+- `index.js`: Configures the Express server, Socket.io, and handles socket events.
 
 ## Frontend Structure
 
