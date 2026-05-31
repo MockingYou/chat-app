@@ -1,17 +1,9 @@
-import React, { useState, useEffect } from "react";
-
-function Image(props) {
-    const [imageSrc, setImageSrc] = useState("")
-    useEffect(() => {
-        const reader = new FileReader()
-        reader.readAsDataURL(props.blob)
-        reader.onloadend = function () {
-            setImageSrc(reader.result)
-        }
-    }, [props.blob])
-    return (
-        <img className="imgSent" src={imageSrc} alt={props.fileName} />
-    )
+function Image({ src, fileName }) {
+  return (
+    <a href={src} download={fileName} target="_blank" rel="noreferrer">
+      <img className="imgSent" src={src} alt={fileName} />
+    </a>
+  )
 }
 
 export default Image

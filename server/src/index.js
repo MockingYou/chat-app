@@ -11,14 +11,16 @@ const { addUser, removeUser, getUser, getUsersInRoom } = require('./utils/users'
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server, {
+    maxHttpBufferSize: 1e8,
     noServer: true,
     cors: {
-        origin: '*',
+        origin: process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : ['http://localhost:3000', 'http://localhost:5000'],
         methods: ['GET', 'POST'],
+        credentials: true,
     },
 });
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 const publicDirectoryPath = path.join(__dirname, '../public');
 
 app.use(express.static(publicDirectoryPath));
@@ -49,7 +51,10 @@ io.on('connection', (socket) => {
 
         socket.on('typing', (data) => {
             try {
-                socket.broadcast.emit('typingResponse', data);
+                const user = getUser(socket.id);
+                if (user) {
+                    socket.broadcast.to(user.room).emit('typingResponse', data);
+                }
             } catch (error) {
                 console.error('Error in typing event:', error);
             }
@@ -60,14 +65,19 @@ io.on('connection', (socket) => {
                 const user = getUser(socket.id);
                 const filter = new Filter();
                 const createdAt = moment(new Date().getTime()).format('H:mm:ss');
-                if (filter.isProfane(messageObject.message)) {
-                    io.emit('message', generateMessage('Admin', 'https://www.youtube.com/watch?v=25f2IgIrkD4', createdAt, socket.id + Math.random(), 'text'));
+                // Only run profanity checks for text messages and when body is a string
+                if (messageObject && messageObject.type === 'text' && typeof messageObject.body === 'string' && filter.isProfane(messageObject.body)) {
+                    socket.emit('message', generateMessage('Admin', 'https://www.youtube.com/watch?v=25f2IgIrkD4', createdAt, socket.id + Math.random(), 'text'));
                     return callback('https://www.youtube.com/watch?v=25f2IgIrkD4');
                 }
                 if (user) {
                     io.to(user.room).emit('message', generateMessage(user.username, messageObject.body, createdAt, messageObject.id, messageObject.type, messageObject.fileName));
+                } else if (messageObject.roomname) {
+                    // Fallback: use roomname from messageObject, but skip username since user is null
+                    io.to(messageObject.roomname).emit('message', generateMessage('Unknown', messageObject.body, createdAt, messageObject.id, messageObject.type, messageObject.fileName));
                 } else {
-                    io.to(messageObject.roomname).emit('message', generateMessage(user.username, messageObject.body, createdAt, messageObject.id, messageObject.type, messageObject.fileName));
+                    console.error('Error: User not found and no roomname provided');
+                    callback('Error sending message: User session lost');
                 }
                 callback();
             } catch (error) {
@@ -85,9 +95,6 @@ io.on('connection', (socket) => {
                     io.to(user.room).emit('message', generateMessage('Admin', `${user.username} has left!`, createdAt, user.id + Math.random(), 'text'));
                     io.to(user.room).emit('typingResponse', '');
                 }
-                setTimeout(() => {
-                    socket.disconnect();
-                }, 10000);
             } catch (error) {
                 console.error('Error in disconnect event:', error);
             }
