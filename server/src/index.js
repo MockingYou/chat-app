@@ -19,11 +19,11 @@ const corsOptions = {
     credentials: true,
 };
 
-app.use(cors(corsOptions));  // ← use same config object
+app.use(cors(corsOptions));  
 
 const io = socketio(server, {
     maxHttpBufferSize: 1e8,
-    cors: corsOptions,        // ← reuse same config object
+    cors: corsOptions,  
 });
 
 const port = process.env.PORT || 5001;
@@ -73,8 +73,8 @@ io.on('connection', (socket) => {
                 const createdAt = moment(new Date().getTime()).format('H:mm:ss');
                 // Only run profanity checks for text messages and when body is a string
                 if (messageObject && messageObject.type === 'text' && typeof messageObject.body === 'string' && filter.isProfane(messageObject.body)) {
-                    socket.emit('message', generateMessage('Admin', 'https://www.youtube.com/watch?v=25f2IgIrkD4', createdAt, socket.id + Math.random(), 'text'));
-                    return callback('https://www.youtube.com/watch?v=25f2IgIrkD4');
+                    socket.emit('message', generateMessage('Admin', 'Nu mai injura in plm!', createdAt, socket.id + Math.random(), 'text'));
+                    return callback('Nu mai injura in plm!');
                 }
                 if (user) {
                     io.to(user.room).emit('message', generateMessage(user.username, messageObject.body, createdAt, messageObject.id, messageObject.type, messageObject.fileName));

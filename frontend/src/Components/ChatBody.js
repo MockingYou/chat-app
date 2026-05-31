@@ -10,6 +10,14 @@ const ChatBody = ({ messages, typingStatus, lastMessageRef }) => {
     setRoomname(localStorage.getItem("roomname"))
   }, [])
 
+  useEffect(() => {
+    const last = messages[messages.length - 1]
+    if (last?.username === 'Admin' && last?.body === 'Nu mai injura in plm!') {
+      const audio = new Audio('/audio/watch your profanity - plue.mp3')
+      audio.play().catch(() => {})
+    }
+  }, [messages])
+
   const handleLeaveChat = () => {
     localStorage.removeItem("username")
     localStorage.removeItem("roomname")

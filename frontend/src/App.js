@@ -6,7 +6,15 @@ import React, { useEffect } from 'react'
 import Login from './Pages/Login'
 import Chat from './Pages/Chat'
 
-const socket = socketIO.connect("https://chat-server-jvt5.onrender.com", {
+// const socket = socketIO.connect("https://chat-server-jvt5.onrender.com", {
+//   withCredentials: true, 
+//   reconnection: true,
+//   reconnectionDelay: 1000,
+//   reconnectionDelayMax: 5000,
+//   reconnectionAttempts: 5
+// });
+
+const socket = socketIO.connect("http://localhost:5001", {
   withCredentials: true, 
   reconnection: true,
   reconnectionDelay: 1000,
@@ -14,7 +22,6 @@ const socket = socketIO.connect("https://chat-server-jvt5.onrender.com", {
   reconnectionAttempts: 5
 });
 
-// Add socket error handlers
 socket.on('connect_error', (error) => {
   console.error('Socket connection error:', error);
 });
