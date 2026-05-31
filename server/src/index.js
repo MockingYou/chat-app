@@ -10,14 +10,20 @@ const { addUser, removeUser, getUser, getUsersInRoom } = require('./utils/users'
 
 const app = express();
 const server = http.createServer(app);
+
+const corsOptions = {
+    origin: process.env.ALLOWED_ORIGINS 
+        ? process.env.ALLOWED_ORIGINS.split(',') 
+        : ['http://localhost:3000'],
+    methods: ['GET', 'POST'],
+    credentials: true,
+};
+
+app.use(cors(corsOptions));  // ← use same config object
+
 const io = socketio(server, {
     maxHttpBufferSize: 1e8,
-    noServer: true,
-    cors: {
-        origin: process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : ['http://localhost:3000', 'http://localhost:5000'],
-        methods: ['GET', 'POST'],
-        credentials: true,
-    },
+    cors: corsOptions,        // ← reuse same config object
 });
 
 const port = process.env.PORT || 5001;
